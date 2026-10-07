@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Portfólio pessoal de Kauan Pires — Desenvolvedor de Sistemas.">
+    <meta name="author" content="Kauan Pires">
+
+    <title>Kauan Pires | Desenvolvedor de Sistemas</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #05070b;
+            color: #f5f7ff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: #006eff;
+            filter: blur(180px);
+            opacity: 0.08;
+            top: -250px;
+            right: -200px;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: #004cff;
+            filter: blur(180px);
+            opacity: 0.05;
+            bottom: -250px;
+            left: -200px;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+        /* =========================
+           SCROLLBAR
+        ========================= */
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #05070b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #145dff;
+            border-radius: 20px;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 76px;
+            z-index: 1000;
+            background: rgba(5, 7, 11, 0.72);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .navbar {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #2474ff;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            position: relative;
+            font-size: 14px;
+            color: #a9b1c4;
+            transition: 0.3s;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -7px;
+            width: 0;
+            height: 2px;
+            background: #2474ff;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .header-btn {
+            padding: 10px 17px;
+            border-radius: 10px;
+            border: 1px solid rgba(36,116,255,0.4);
+            background: rgba(36,116,255,0.1);
+            color: #fff;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .header-btn:hover {
+            background: #2474ff;
+            box-shadow: 0 0 25px rgba(36,116,255,0.3);
+        }
+
+        .menu-btn {
+            display: none;
+            border: 0;
+            background: transparent;
+            color: #fff;
+            font-size: 27px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 76px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grid-background {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 55px 55px;
+            mask-image: linear-gradient(to bottom, black 0%, transparent 90%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            align-items: center;
+            gap: 70px;
+        }
+
+        .hero-text {
+            animation: heroIn 0.9s ease forwards;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border: 1px solid rgba(36,116,255,0.28);
+            background: rgba(36,116,255,0.07);
+            color: #6da0ff;
+            border-radius: 50px;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+            margin-bottom: 24px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #2474ff;
+            box-shadow: 0 0 12px #2474ff;
+            animation: pulse 1.8s infinite;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 7vw, 86px);
+            line-height: 0.98;
+            letter-spacing: -4px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            color: #2474ff;
+            text-shadow: 0 0 35px rgba(36,116,255,0.2);
+        }
+
+        .hero-description {
+            max-width: 600px;
+            color: #9ca5ba;
+            font-size: 17px;
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 13px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 13px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #2474ff;
+            color: #fff;
+            box-shadow: 0 0 25px rgba(36,116,255,0.18);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 35px rgba(36,116,255,0.4);
+        }
+
+        .btn-secondary {
+            border: 1px solid #242b39;
+            background: #0b0e14;
+            color: #d8deeb;
+        }
+
+        .btn-secondary:hover {
+            border-color: #2474ff;
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           TERMINAL
+        ========================= */
+
+        .terminal {
+            border: 1px solid #202633;
+            border-radius: 18px;
+            background: rgba(9,12,18,0.9);
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.35),
+                0 0 50px rgba(36,116,255,0.05);
+            overflow: hidden;
+            animation: floating 5s ease-in-out infinite;
+        }
+
+        .terminal-top {
+            height: 43px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 0 15px;
+            border-bottom: 1px solid #1d232e;
+            background: #0c1017;
+        }
+
+        .terminal-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #293241;
+        }
+
+        .terminal-title {
+            margin-left: auto;
+            margin-right: auto;
+            font-family: "JetBrains Mono", monospace;
+            color: #596477;
+            font-size: 11px;
+        }
+
+        .terminal-body {
+            padding: 27px;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 13px;
+            line-height: 2;
+            color: #8994a8;
+        }
+
+        .terminal-line {
+            display: block;
+        }
+
+        .blue {
+            color: #4f91ff;
+        }
+
+        .white {
+            color: #e7ebf4;
+        }
+
+        .gray {
+            color: #626e82;
+        }
+
+        .green {
+            color: #59d99a;
+        }
+
+        .terminal-cursor {
+            display: inline-block;
+            width: 7px;
+            height: 15px;
+            background: #2474ff;
+            vertical-align: middle;
+            animation: blink 1s infinite;
+        }
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        section {
+            padding: 110px 0;
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-number {
+            color: #2474ff;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: clamp(30px, 5vw, 48px);
+            letter-spacing: -2px;
+            margin-bottom: 12px;
+        }
+
+        .section-description {
+            color: #8f99ac;
+            max-width: 650px;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 25px;
+        }
+
+        .glass-card {
+            background: rgba(11,14,21,0.75);
+            border: 1px solid #1e2531;
+            border-radius: 18px;
+            padding: 30px;
+            transition: 0.35s;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(36,116,255,0.35);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .about-text {
+            color: #a0a9ba;
+            font-size: 15px;
+        }
+
+        .about-text strong {
+            color: #fff;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .info-item {
+            padding: 20px;
+            border-radius: 13px;
+            background: #090c12;
+            border: 1px solid #1b222d;
+        }
+
+        .info-item small {
+            display: block;
+            color: #626d80;
+            font-size: 11px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-item strong {
+            font-size: 14px;
+            color: #e6ebf5;
+        }
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .skill-card {
+            padding: 28px;
+            background: #0a0d13;
+            border: 1px solid #1e2531;
+            border-radius: 17px;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
+            border-color: #2474ff;
+        }
+
+        .skill-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: rgba(36,116,255,0.1);
+            border: 1px solid rgba(36,116,255,0.2);
+            color: #4f91ff;
+            font-size: 19px;
+            margin-bottom: 18px;
+        }
+
+        .skill-card h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .skill-card p {
+            color: #737e91;
+            font-size: 13px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 15px;
+        }
+
+        .skill-tag {
+            padding: 5px 9px;
+            border-radius: 6px;
+            background: #111621;
+            border: 1px solid #202938;
+            color: #8994a7;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+        }
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            min-height: 300px;
+            padding: 24px;
+            background: #090c12;
+            border: 1px solid #1e2531;
+            border-radius: 17px;
+            transition: 0.35s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background: #2474ff;
+            filter: blur(90px);
+            opacity: 0;
+            top: -100px;
+            right: -100px;
+            transition: 0.4s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(36,116,255,0.5);
+        }
+
+        .project-card:hover::before {
+            opacity: 0.13;
+        }
+
+        .project-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .folder {
+            font-size: 25px;
+            color: #2474ff;
+        }
+
+        .project-link {
+            color: #6e798d;
+            transition: 0.3s;
+        }
+
+        .project-link:hover {
+            color: #fff;
+        }
+
+        .project-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            word-break: break-word;
+        }
+
+        .project-card p {
+            color: #747f92;
+            font-size: 13px;
+            flex: 1;
+        }
+
+        .project-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            padding-top: 17px;
+            border-top: 1px solid #1b222d;
+        }
+
+        .language {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #9ba5b8;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+        }
+
+        .language-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #2474ff;
+        }
+
+        .stars {
+            color: #737d90;
+            font-size: 11px;
+        }
+
+        .loading {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 50px;
+            color: #707b8e;
+        }
+
+        /* =========================
+           EDUCATION
+        ========================= */
+
+        .timeline {
+            position: relative;
+            max-width: 850px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background: #202735;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 35px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 3px;
+            top: 7px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #2474ff;
+            box-shadow: 0 0 15px rgba(36,116,255,0.7);
+        }
+
+        .timeline-year {
+            color: #2474ff;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            margin-bottom: 7px;
+        }
+
+        .timeline-item h3 {
+            font-size: 19px;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item p {
+            color: #747e91;
+            font-size: 14px;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-box {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 70px 30px;
+            border-radius: 22px;
+            border: 1px solid #1e2b40;
+            background:
+                radial-gradient(circle at 50% 0%, rgba(36,116,255,0.14), transparent 55%),
+                #080b11;
+        }
+
+        .contact-box h2 {
+            font-size: clamp(30px, 5vw, 48px);
+            letter-spacing: -2px;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            color: #7f899b;
+            max-width: 580px;
+            margin: 0 auto 28px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 35px 0;
+            border-top: 1px solid #161c25;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer-content p {
+            color: #596375;
+            font-size: 12px;
+        }
+
+        .footer-brand {
+            font-weight: 700;
+        }
+
+        .footer-brand span {
+            color: #2474ff;
+        }
+
+        /* =========================
+           REVEAL
+        ========================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================
+           ANIMATIONS
+        ========================= */
+
+        @keyframes heroIn {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.45;
+                transform: scale(0.75);
+            }
+        }
+
+        @keyframes blink {
+            0%, 45% {
+                opacity: 1;
+            }
+
+            46%, 100% {
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 950px) {
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .terminal {
+                max-width: 650px;
+                width: 100%;
+                margin: auto;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 720px) {
+
+            header {
+                height: 68px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 68px;
+                left: 0;
+                width: 100%;
+                padding: 25px;
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                background: rgba(5,7,11,0.97);
+                border-bottom: 1px solid #1b222d;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .header-btn {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding-top: 100px;
+            }
+
+            .hero h1 {
+                letter-spacing: -3px;
+            }
+
+            .hero-description {
+                font-size: 15px;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .terminal-body {
+                padding: 20px;
+                font-size: 11px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 430px) {
+
+            .container {
+                width: 90%;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .glass-card,
+            .skill-card,
+            .project-card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+        <div class="container navbar">
+
+            <a href="#inicio" class="logo">
+                KAUAN<span>.</span>
+            </a>
+
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#habilidades">Habilidades</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#trajetoria">Trajetória</a></li>
+                    <li><a href="#formacao">Formação</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+
+            <a
+                href="https://github.com/kauanpires1023-create"
+                target="_blank"
+                class="header-btn"
+            >
+                GitHub ↗
+            </a>
+
+            <button class="menu-btn" id="menuBtn">
+                ☰
+            </button>
+
+        </div>
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <main>
+
+        <section class="hero" id="inicio">
+
+            <div class="grid-background"></div>
+
+            <div class="container hero-content">
+
+                <div class="hero-text">
+
+                    <div class="hero-tag">
+                        <span class="status-dot"></span>
+                        DISPONÍVEL PARA OPORTUNIDADES
+                    </div>
+
+                    <h1>
+                        Olá, eu sou<br>
+                        <span>Kauan Pires.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Tenho 17 anos e sou estudante de
+                        <strong>Desenvolvimento de Sistemas</strong>.
+                        Gosto de transformar ideias em sistemas,
+                        interfaces e projetos funcionais.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#projetos" class="btn btn-primary">
+                            Ver meus projetos →
+                        </a>
+
+                        <a
+                            href="https://github.com/kauanpires1023-create"
+                            target="_blank"
+                            class="btn btn-secondary"
+                        >
+                            GitHub ↗
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TERMINAL -->
+
+                <div class="terminal">
+
+                    <div class="terminal-top">
+
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+
+                        <span class="terminal-title">
+                            kauanpires.js
+                        </span>
+
+                    </div>
+
+                    <div class="terminal-body">
+
+                        <span class="terminal-line">
+                            <span class="blue">const</span>
+                            <span class="white"> kauan</span>
+                            =
+                            <span class="blue">{</span>
+                        </span>
+
+                        <span class="terminal-line">
+                            &nbsp;&nbsp;
+                            <span class="gray">nome:</span>
+                            <span class="green"> "Kauan Pires"</span>,
+                        </span>
+
+                        <span class="terminal-line">
+                            &nbsp;&nbsp;
+                            <span class="gray">idade:</span>
+                            <span class="green"> 17</span>,
+                        </span>
+
+                        <span class="terminal-line">
+                            &nbsp;&nbsp;
+                            <span class="gray">cidade:</span>
+                            <span class="green"> "São Paulo"</span>,
+                        </span>
+
+                        <span class="terminal-line">
+                            &nbsp;&nbsp;
+                            <span class="gray">area:</span>
+                            <span class="green"> "Desenvolvimento"</span>,
+                        </span>
+
+                        <span class="terminal-line">
+                            &nbsp;&nbsp;
+                            <span class="gray">formacao:</span>
+                            <span class="green">
+                                "Técnico em DS"
+                            </span>,
+                        </span>
+
+                        <span class="terminal-line">
+                            &nbsp;&nbsp;
+                            <span class="gray">foco:</span>
+                            <span class="green">
+                                "Front-end"
+                            </span>
+                        </span>
+
+                        <span class="terminal-line">
+                            <span class="blue">}</span>;
+                        </span>
+
+                        <br>
+
+                        <span class="terminal-line">
+                            <span class="blue">while</span>
+                            (true) {
+                        </span>
+
+                        <span class="terminal-line">
+                            &nbsp;&nbsp;
+                            aprender();
+                        </span>
+
+                        <span class="terminal-line">
+                            &nbsp;&nbsp;
+                            desenvolver();
+                        </span>
+
+                        <span class="terminal-line">
+                            &nbsp;&nbsp;
+                            evoluir();
+                        </span>
+
+                        <span class="terminal-line">
+                            }
+                            <span class="terminal-cursor"></span>
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SOBRE
+        ========================== -->
+
+        <section id="sobre">
+
+            <div class="container">
+
+                <div class="section-header reveal">
+
+                    <div class="section-number">
+                        01 — SOBRE MIM
+                    </div>
+
+                    <h2 class="section-title">
+                        Conheça um pouco de mim.
+                    </h2>
+
+                    <p class="section-description">
+                        Um pouco sobre quem sou, minha formação
+                        e meus objetivos profissionais.
+                    </p>
+
+                </div>
+
+
+                <div class="about-grid">
+
+                    <div class="glass-card reveal">
+
+                        <p class="about-text">
+
+                            Meu nome é <strong>Kauan Pires</strong>,
+                            tenho 17 anos e moro em São Paulo.
+
+                            <br><br>
+
+                            Atualmente estudo
+                            <strong>Técnico em Desenvolvimento de Sistemas</strong>,
+                            área pela qual tenho grande interesse.
+
+                            <br><br>
+
+                            Gosto de desenvolver projetos e aprender
+                            novas tecnologias, trabalhando tanto com
+                            <strong>Front-end</strong> quanto com
+                            <strong>Back-end</strong>.
+
+                            <br><br>
+
+                            Comecei a programar em <strong>2025</strong>, motivado pelo
+                            meu interesse pela área de tecnologia.
+
+                            <br><br>
+
+                            Tenho maior interesse em <strong>Front-end</strong> e gosto
+                            principalmente de criar sites, interfaces e experiências
+                            digitais modernas e responsivas.
+
+                            <br><br>
+
+                            Também venho estudando <strong>Java, JavaScript, Python,
+                            PHP, bancos de dados e Inteligência Artificial</strong>,
+                            buscando ampliar meus conhecimentos e me aprimorar
+                            continuamente.
+
+                            <br><br>
+
+                            Atualmente busco minha primeira oportunidade profissional,
+                            seja como <strong>estagiário, jovem aprendiz ou desenvolvedor</strong>,
+                            para transformar meus estudos em experiência prática.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="glass-card reveal">
+
+                        <div class="info-grid">
+
+                            <div class="info-item">
+                                <small>Nome</small>
+                                <strong>Kauan Pires</strong>
+                            </div>
+
+                            <div class="info-item">
+                                <small>Idade</small>
+                                <strong>17 anos</strong>
+                            </div>
+
+                            <div class="info-item">
+                                <small>Localização</small>
+                                <strong>São Paulo — SP</strong>
+                            </div>
+
+                            <div class="info-item">
+                                <small>Área</small>
+                                <strong>Front-end</strong>
+                            </div>
+
+                            <div class="info-item">
+                                <small>Formação</small>
+                                <strong>Técnico em DS</strong>
+                            </div>
+
+                            <div class="info-item">
+                                <small>Experiência</small>
+                                <strong>Projetos e estudos</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             HABILIDADES
+        ========================== -->
+
+        <section id="habilidades">
+
+            <div class="container">
+
+                <div class="section-header reveal">
+
+                    <div class="section-number">
+                        02 — HABILIDADES
+                    </div>
+
+                    <h2 class="section-title">
+                        O que eu faço.
+                    </h2>
+
+                    <p class="section-description">
+                        Conhecimentos desenvolvidos durante minha
+                        formação e através dos meus projetos.
+                    </p>
+
+                </div>
+
+
+                <div class="skills-grid">
+
+                    <div class="skill-card reveal">
+
+                        <div class="skill-icon">
+                            &lt;/&gt;
+                        </div>
+
+                        <h3>Front-end</h3>
+
+                        <p>
+                            Criação de interfaces modernas,
+                            responsivas e funcionais.
+                        </p>
+
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Responsivo</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill-card reveal">
+
+                        <div class="skill-icon">
+                            { }
+                        </div>
+
+                        <h3>Back-end</h3>
+
+                        <p>
+                            Desenvolvimento da lógica e estrutura
+                            necessária para aplicações.
+                        </p>
+
+                        <div class="skill-tags">
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill-card reveal">
+
+                        <div class="skill-icon">
+                            DB
+                        </div>
+
+                        <h3>Projetos & Sistemas</h3>
+
+                        <p>
+                            Desenvolvimento de sistemas completos
+                            para solucionar problemas reais.
+                        </p>
+
+                        <div class="skill-tags">
+                            <span class="skill-tag">Banco de dados</span>
+                            <span class="skill-tag">IA</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">VS Code</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section id="trajetoria">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="section-number">03 — TRAJETÓRIA</div>
+                    <h2 class="section-title">Minha evolução na tecnologia.</h2>
+                    <p class="section-description">
+                        Uma trajetória construída através de estudos, prática e projetos.
+                    </p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item reveal">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-year">2025</div>
+                        <h3>Início na programação</h3>
+                        <p>Comecei a programar e a explorar diferentes tecnologias da área de Desenvolvimento de Sistemas.</p>
+                    </div>
+                    <div class="timeline-item reveal">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-year">ATUALMENTE</div>
+                        <h3>Projetos e aprendizado</h3>
+                        <p>Venho criando sites e sistemas para praticar meus conhecimentos e entender melhor como transformar ideias em soluções digitais.</p>
+                    </div>
+                    <div class="timeline-item reveal">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-year">OBJETIVO</div>
+                        <h3>Primeira oportunidade profissional</h3>
+                        <p>Quero continuar me aprimorando e encontrar uma oportunidade como estágio, jovem aprendiz ou desenvolvedor.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="objetivo">
+            <div class="container">
+                <div class="contact-box reveal">
+                    <div class="section-number">04 — OBJETIVO PROFISSIONAL</div>
+                    <h2>Transformar conhecimento em experiência.</h2>
+                    <p>
+                        Meu objetivo é me aprimorar cada vez mais na área de tecnologia,
+                        desenvolver projetos melhores e aprender com desafios reais.
+                    </p>
+                    <div class="contact-links">
+                        <span class="btn btn-secondary">Front-end</span>
+                        <span class="btn btn-secondary">Sites</span>
+                        <span class="btn btn-secondary">Projetos</span>
+                        <span class="btn btn-secondary">Evolução constante</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PROJETOS
+        ========================== -->
+
+        <section id="projetos">
+
+            <div class="container">
+
+                <div class="section-header reveal">
+
+                    <div class="section-number">
+                        05 — PROJETOS
+                    </div>
+
+                    <h2 class="section-title">
+                        O que já construí.
+                    </h2>
+
+                    <p class="section-description">
+                        Estes projetos são carregados diretamente
+                        do meu GitHub.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="projects-grid"
+                    id="projectsGrid"
+                >
+
+                    <div class="loading">
+                        Carregando meus projetos do GitHub...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FORMAÇÃO
+        ========================== -->
+
+        <section id="formacao">
+
+            <div class="container">
+
+                <div class="section-header reveal">
+
+                    <div class="section-number">
+                        06 — FORMAÇÃO
+                    </div>
+
+                    <h2 class="section-title">
+                        Minha trajetória.
+                    </h2>
+
+                </div>
+
+
+                <div class="timeline">
+
+                    <div class="timeline-item reveal">
+
+                        <span class="timeline-dot"></span>
+
+                        <div class="timeline-year">
+                            ATUALMENTE
+                        </div>
+
+                        <h3>
+                            Técnico em Desenvolvimento de Sistemas
+                        </h3>
+
+                        <p>
+                            Formação técnica voltada ao desenvolvimento
+                            de sistemas, programação, banco de dados,
+                            desenvolvimento web e tecnologias relacionadas.
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item reveal">
+
+                        <span class="timeline-dot"></span>
+
+                        <div class="timeline-year">
+                            EXPERIÊNCIA
+                        </div>
+
+                        <h3>
+                            Projetos pessoais e acadêmicos
+                        </h3>
+
+                        <p>
+                            Desenvolvimento de projetos próprios e
+                            acadêmicos para aplicar conhecimentos de
+                            programação e desenvolvimento de sistemas.
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item reveal">
+
+                        <span class="timeline-dot"></span>
+
+                        <div class="timeline-year">
+                            PRÓXIMO PASSO
+                        </div>
+
+                        <h3>
+                            Primeira oportunidade profissional
+                        </h3>
+
+                        <p>
+                            Buscando uma oportunidade para iniciar
+                            minha carreira na área de tecnologia e
+                            continuar evoluindo profissionalmente.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTATO
+        ========================== -->
+
+        <section id="contato">
+
+            <div class="container">
+
+                <div class="contact-box reveal">
+
+                    <h2>
+                        Vamos criar algo?
+                    </h2>
+
+                    <p>
+                        Estou sempre buscando aprender, desenvolver
+                        novos projetos e encontrar oportunidades para
+                        evoluir na área de tecnologia.
+                    </p>
+
+                    <div class="contact-links">
+
+                        <a
+                            href="https://github.com/kauanpires1023-create"
+                            target="_blank"
+                            class="btn btn-primary"
+                        >
+                            GitHub ↗
+                        </a>
+
+                        <a
+                            href="https://www.instagram.com/kauanpires10_/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-secondary"
+                        >
+                            Instagram
+                        </a>
+
+                        <a
+                            href="mailto:kauanpires.dev@gmail.com"
+                            class="btn btn-secondary"
+                        >
+                            E-mail
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="container footer-content">
+
+            <p class="footer-brand">
+                KAUAN<span>.</span>
+            </p>
+
+            <p>
+                © <span id="year"></span> Kauan Pires.
+                Todos os direitos reservados.
+            </p>
+
+            <p>
+                Desenvolvido por Kauan.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /*
+        =========================================
+        CONFIGURAÇÃO
+        =========================================
+        */
+
+        const GITHUB_USERNAME = "kauanpires1023-create";
+
+
+        /*
+        =========================================
+        MENU MOBILE
+        =========================================
+        */
+
+        const menuBtn = document.getElementById("menuBtn");
+        const navLinks = document.getElementById("navLinks");
+
+        menuBtn.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+
+            if (navLinks.classList.contains("active")) {
+                menuBtn.textContent = "✕";
+            } else {
+                menuBtn.textContent = "☰";
+            }
+        });
+
+
+        /*
+        Fecha menu ao clicar em um link
+        */
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                navLinks.classList.remove("active");
+
+                menuBtn.textContent = "☰";
+
+            });
+
+        });
+
+
+        /*
+        =========================================
+        ANO AUTOMÁTICO
+        =========================================
+        */
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+
+        /*
+        =========================================
+        REVEAL ANIMATION
+        =========================================
+        */
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+        const revealObserver = new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("active");
+
+                        revealObserver.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+        revealElements.forEach(element => {
+
+            revealObserver.observe(element);
+
+        });
+
+
+        /*
+        =========================================
+        GITHUB
+        =========================================
+        */
+
+        async function carregarProjetos() {
+
+            const container =
+                document.getElementById("projectsGrid");
+
+            try {
+
+                const response = await fetch(
+                    `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&direction=desc&per_page=100`
+                );
+
+                if (!response.ok) {
+                    throw new Error("Erro ao acessar GitHub.");
+                }
+
+                const repos = await response.json();
+
+
+                /*
+                Remove forks para mostrar principalmente
+                os projetos próprios.
+                */
+
+                const projetos = repos.filter(repo => !repo.fork);
+
+
+                if (projetos.length === 0) {
+
+                    container.innerHTML = `
+                        <div class="loading">
+                            Nenhum projeto público encontrado no GitHub.
+                        </div>
+                    `;
+
+                    return;
+
+                }
+
+
+                container.innerHTML = "";
+
+
+                projetos.forEach(repo => {
+
+                    const card = document.createElement("article");
+
+                    card.className = "project-card reveal";
+
+
+                    const descricao =
+                        repo.description ||
+                        "Projeto desenvolvido por Kauan Pires.";
+
+
+                    const linguagem =
+                        repo.language ||
+                        "Desenvolvimento";
+
+
+                    card.innerHTML = `
+
+                        <div class="project-top">
+
+                            <span class="folder">
+                                ◈
+                            </span>
+
+                            <a
+                                href="${repo.html_url}"
+                                target="_blank"
+                                class="project-link"
+                                aria-label="Abrir projeto"
+                            >
+                                ↗
+                            </a>
+
+                        </div>
+
+
+                        <h3>
+                            ${escapeHTML(repo.name)}
+                        </h3>
+
+
+                        <p>
+                            ${escapeHTML(descricao)}
+                        </p>
+
+
+                        <div class="project-footer">
+
+                            <span class="language">
+
+                                <span class="language-dot"></span>
+
+                                ${escapeHTML(linguagem)}
+
+                            </span>
+
+
+                            <span class="stars">
+
+                                ★ ${repo.stargazers_count || 0}
+
+                            </span>
+
+                        </div>
+
+                    `;
+
+
+                    container.appendChild(card);
+
+
+                    setTimeout(() => {
+
+                        card.classList.add("active");
+
+                    }, 50);
+
+                });
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                container.innerHTML = `
+
+                    <div class="loading">
+
+                        <p>
+                            Não foi possível carregar os projetos
+                            automaticamente.
+                        </p>
+
+                        <br>
+
+                        <a
+                            href="https://github.com/${GITHUB_USERNAME}"
+                            target="_blank"
+                            class="btn btn-primary"
+                        >
+                            Ver GitHub ↗
+                        </a>
+
+                    </div>
+
+                `;
+
+            }
+
+        }
+
+
+        /*
+        =========================================
+        SEGURANÇA
+        =========================================
+        */
+
+        function escapeHTML(text) {
+
+            const div = document.createElement("div");
+
+            div.textContent = text;
+
+            return div.innerHTML;
+
+        }
+
+
+        /*
+        =========================================
+        INICIAR
+        =========================================
+        */
+
+        carregarProjetos();
+
+    </script>
+
+</body>
+</html>
